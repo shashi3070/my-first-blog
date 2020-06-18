@@ -1,0 +1,125 @@
+{% load static %}
+<!DOCTYPE HTML>
+<!-- Website template by freewebsitetemplates.com -->
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <title>Python Schedule</title>
+      <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+      <link rel="stylesheet" href="{% static 'css/style1.css' %}" type="text/css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+      <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+      <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/plug-ins/1.10.21/dataRender/ellipsis.js"></script>
+      <script type="text/javascript" src="{% static 'js/pythonjobs.js' %}"></script>
+   </head>
+   <div id="MainContentsID" >
+      <div id="header">
+         <div>
+            <div class="logo" style="display: none;">
+               <a href="/"></a>
+            </div>
+            <ul id="navigation">
+               <li >
+                  <a href="/">Home</a>
+               </li>
+               <li class="active">
+                  <a href="/pythonjob">Python Scheduler</a>
+               </li>
+               <li > 
+                  <a href="/matillionjobs">Matillion Scheduler</a>
+               </li>
+               <li>
+                  <a href="/Talendjob">Talend Scheduler</a>
+               </li>
+               <li>
+                  <a href="/CustomJobSee">CustomJob Scheduler</a>
+               </li>
+            </ul>
+         </div>
+      </div>
+      <button id="RefreshPage" class="button button1" >Refresh</button>
+      <button id="Craetematid" onclick="window.open('http://127.0.0.1:8000/admin/website/pythonjobinformations/add/', '_self')" class="button button1" >Create</button>
+      <table class="ScheduleMainTable1 display hover row-border" id="Details_TableID" >
+         <thead>
+            <tr>
+               <th class="datatablecss_header">Job Name</th>
+               <th class="datatablecss_header">HH:MM</th>
+               <th class="datatablecss_header">Days of Week</th>
+               <th class="datatablecss_header">Enable</th>
+               <th class="datatablecss_header">Details</th>
+               <th class="datatablecss_header">Run</th>
+               <th class="datatablecss_header" style="display: none">ID</th>
+               <th class="datatablecss_header">Edit Job</th>
+               <th class="datatablecss_header">LastModified</th>
+            </tr>
+         </thead>
+         <tbody>
+            {% for row in obj %}
+            <tr>
+               <td>{{row.JobName}}</td>
+               <td>
+                  {{row.Hours}}:{{row.Minutes}} 
+               </td>
+               <td>
+                  {{row.Day_of_Week}}
+               </td>
+               <td>{{row.Enable}}</td>
+               <td class="detailsID" >
+                  <a class="ahrefid tempclass tempclass3" value="{{row.JobName}}#{{row.Hours}}#{{row.Minutes}}" href="" onclick="return false;">History</a>
+               </td>
+               <td class="RUNCLASS">
+                  <a class="tempclass tempclass2" href="" value="{{row.JobName}}#{{row.Hours}}#{{row.Minutes}}#{{row.Day_of_Week|title}}" onclick="return false">Run Now</a>
+               </td>
+               <td class="Getrowid" style="display: none;">{{row.id}}
+               </td>
+               <td class="SeeJobiDCred">
+                  <a class="tempclass SeeJobiDCred" href="" value="{{row.id}}" onclick="">Edit Info</a>
+               </td>
+               <td>
+                  {{row.LastModified|date:'Y-m-d H:i:s'}}/{{row.LastModifiedBy}}
+               </td>
+            </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+      <!-- The Modal -->
+   </div>
+   <body id="bodycontentid">
+      <div id="LoaderID" style="display: none;margin-left: 40%;">
+         <div class="loadingio-spinner-spinner-hp4ibjdsd7o">
+            <div class="ldio-tsfupe7vjv">
+               <div></div>
+               <div></div>
+               <div></div>
+               <div></div>
+               <div></div>
+               <div></div>
+               <div></div>
+               <div></div>
+               <div></div>
+               <div></div>
+               <div></div>
+               <div></div>
+            </div>
+         </div>
+      </div>
+      <div id="Historydivid" style="display: none;">
+         <p style="text-align: center;font-weight: bold;">History</p>
+      </div>
+      <table class="display hover row-border" id="MatHistoryID" style="visibility: hidden;" >
+         <thead>
+            <th>JobID</th>
+            <th>JobName</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Schedule/Manual</th>
+            <th>Status</th>
+            <th>description</th>
+         </thead>
+         <tbody id="MatHistoryIDbody">
+         </tbody>
+      </table>
+   </body>
+</html>

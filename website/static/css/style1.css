@@ -1,0 +1,67 @@
+  		.datatablecss_header{
+  			    font-weight: 400;
+    			
+    			font-size: 0.75rem;
+    			color: rgb(56, 76, 110);
+    			text-transform: uppercase;
+    			background-color: #fafaf9;
+    			padding: 20px 20px 0px 10px !important;
+
+    			font-family: "Salesforce Sans",Arial,sans-serif;
+    			line-height: 1.5;
+
+  		}
+  		table.dataTable thead th, table.dataTable thead td {
+    				padding: 10px 18px;
+    				
+    				border-bottom: 2px solid #d8dde6;
+    				border-top: 2px solid #d8dde6;
+		}
+
+		a{
+
+			color: #1ea6d3;
+		}
+
+		td{
+
+    		text-align: center;		
+    	}
+    	#RefreshPage{
+    		padding: 10px 10px 27px 8px;
+		    width: fit-content;
+		    background-color: #1ea6d3;
+		    border-color: #1ea6d3;
+		    border-radius: 5px;
+		    height: 5px;
+		    text-align: center;
+    	}
+    	#Craetematid{
+    		padding: 10px 10px 27px 8px;
+		    width: fit-content;
+		    background-color: #1ea6d3;
+		    border-color: #1ea6d3;
+		    border-radius: 5px;
+		    height: 5px;
+		    text-align: center;
+    	}
+        #Customid{
+            padding: 10px 10px 27px 8px;
+            width: fit-content;
+            background-color: #1ea6d3;
+            border-color: #1ea6d3;
+            border-radius: 5px;
+            height: 5px;
+            text-align: center;
+        }
+        
+    	a.tempclass{
+    			width: fit-content;
+    		    text-decoration: none;
+			    background-color: #1ea6d3;
+			    color: white;
+			    padding: 4px 8px 4px 9px;
+			    border-radius: 5px;
+    	}
+
+

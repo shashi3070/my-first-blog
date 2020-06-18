@@ -1,0 +1,250 @@
+{% load static %}
+<!DOCTYPE HTML>
+<!-- Website template by freewebsitetemplates.com -->
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Schedular</title>
+	<link rel="stylesheet" href="{% static 'css/style.css' %} " type="text/css">
+	<style type="text/css">
+		.button {
+			  background-color: #4CAF50; /* Green */
+			  border: none;
+			  color: white;
+			  padding: 16px 32px;
+			  text-align: center;
+			  text-decoration: none;
+			  display: inline-block;
+			  font-size: 16px;
+			  margin: 4px 2px;
+			  transition-duration: 0.4s;
+			  cursor: pointer;
+			}
+
+			.button1 {
+			  background-color: 008CBA; 
+			  color: white; 
+			  border: 2px solid #4CAF50;
+			}
+
+			.button1:hover {
+			  background-color: white;
+			  color: black;
+			}
+
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript">
+
+	$(document).ready(function () {
+
+		$('#matid').on('click',function(e){
+
+			$.ajax(
+		    {
+		        type:"GET",
+		        url: "/StartMatilionJob/",
+		        data:{
+		                 JobID: 'sample',
+		        },
+
+		        dataType: 'json',
+
+		        success: function( data ) 
+		        {
+		            console.log(data)
+		            
+		          
+		        }
+		     });
+		});
+	});
+	$(document).ready(function () {
+
+		$('#pythonid').on('click',function(e){
+
+			$.ajax(
+		    {
+		        type:"GET",
+		        url: "/StartPythonJob/",
+		        data:{
+		                 JobID: 'sample',
+		        },
+
+		        dataType: 'json',
+
+		        success: function( data ) 
+		        {
+		            console.log(data)
+		            
+		          
+		        }
+		     });
+		});
+	});
+
+	$(document).ready(function () {
+
+		$('#Talendid').on('click',function(e){
+
+			$.ajax(
+		    {
+		        type:"GET",
+		        url: "/StartTalendJob/",
+		        data:{
+		                 JobID: 'sample',
+		        },
+
+		        dataType: 'json',
+
+		        success: function( data ) 
+		        {
+		            console.log(data)
+		            
+		          
+		        }
+		     });
+		});
+	});
+
+	$(document).ready(function () {
+
+		$('#CustomidRun').on('click',function(e){
+
+			$.ajax(
+		    {
+		        type:"GET",
+		        url: "/StartCustomJob/",
+		        data:{
+		                 JobID: 'sample',
+		        },
+
+		        dataType: 'json',
+
+		        success: function( data ) 
+		        {
+		            console.log(data)
+		            
+		          
+		        }
+		     });
+		});
+	});
+
+	$(document).ready(function () {
+		$('#matid').on('click',function(e){
+
+			$('#matid').css({"display":"None"})
+			$('#matrunid').css({"display":""})
+
+
+		});
+
+		$('#matrunid').on('click',function(e){
+
+			$('#matrunid').css({"display":"None"})
+			$('#matid').css({"display":""})
+
+
+		});
+
+
+		$('#Talendid').on('click',function(e){
+
+			$('#Talendid').css({"display":"None"})
+			$('#Talendrunid').css({"display":""})
+
+
+		});
+
+		$('#Talendrunid').on('click',function(e){
+
+			$('#Talendrunid').css({"display":"None"})
+			$('#Talendid').css({"display":""})
+
+
+		});
+
+
+
+	$('#pythonid').on('click',function(e){
+
+			$('#pythonid').css({"display":"None"})
+			$('#pythonrunid').css({"display":""})
+
+
+		});
+
+		$('#pythonrunid').on('click',function(e){
+
+			$('#pythonrunid').css({"display":"None"})
+			$('#pythonid').css({"display":""})
+
+
+		});
+
+		$('#CustomidRun').on('click',function(e){
+
+			$('#CustomidRun').css({"display":"None"})
+			$('#CustomrunidRun').css({"display":""})
+
+
+		});
+
+		$('#CustomrunidRun').on('click',function(e){
+
+			$('#CustomrunidRun').css({"display":"None"})
+			$('#CustomidRun').css({"display":""})
+
+
+		});
+
+
+	});
+
+	</script>
+</head>
+<body>
+	<div id="header">
+		<div>
+			<div class="logo">
+				<a href="/"></a>
+			</div>
+			<ul id="navigation">
+				<li class="active">
+					<a href="/">Home</a>
+				</li>
+				<li>
+					<a href="pythonjob">Python Scheduler</a>
+				</li>
+				<li>
+					<a href="matillionjobs">Matillion Scheduler</a>
+				</li>
+				<li>
+					<a href="Talendjob">Talend Scheduler</a>
+				</li>
+				<li>
+					<a href="CustomJobSee">CustomJob Scheduler</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div>
+		<button id="matid" class="button button1">Start Matillion Schedular</button>
+		<button style="display: None" id="matrunid" class="button button1">Matillion Schedular Running</button>
+
+		<button id="pythonid" class="button button1">Start Python Schedular</button>
+		<button style="display: None" id="pythonrunid" class="button button1">Python Schedular Running</button>
+
+		<button id="Talendid" class="button button1">Start Talend Schedular</button>
+		<button style="display: None" id="Talendrunid" class="button button1">Talend Schedular Running</button>
+
+		<button id="CustomidRun" class="button button1">Start Custom Schedular</button>
+		<button style="display: None" id="CustomrunidRun" class="button button1">Custom Schedular Running</button>
+		
+		
+	</div>
+	
+	
+</body>
+</html>

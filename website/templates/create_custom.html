@@ -1,0 +1,313 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Craete Custom Work Flow</title>
+      <meta name="title" content="Flowy - The simple flowchart engine">
+      <link rel="stylesheet" href="{% static 'custom_css/styles.css' %} " type="text/css">
+      <link rel="stylesheet" href="{% static 'custom_css/flowy.min.css' %} " type="text/css">
+      <link rel="stylesheet" href="{% static 'custom_css/forminline.css' %} " type="text/css">
+      <script src="{% static 'custom_js/flowy.min.js' %} "></script>
+      <script src="{% static 'custom_js/main.js' %}"></script> 
+      <script src="{% static 'custom_js/impo.js' %} "></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
+      <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+      <script>
+         //////////////////////////////////////////////////////
+         function myFunction1(e){
+            console.log(e.target)
+            e.setAttribute("value", e.value);
+         }
+         
+         var data;
+         
+            $(document).ready(function () {
+                $('#publish').on('click',function(e){
+                    data=flowy.output();
+                        console.log('_________________________________________________')
+                    console.log(data)
+                        console.log('_________________________________________________')
+                    localStorage.setItem('user',JSON.stringify(data))
+         
+                        JobName=$('#JobNameID').val()
+                        days=$('#Daysid').val()
+                        Hours=$('#Hourid').val()
+                        Minutes=$('#MinutesId').val()
+         
+                        
+         
+                        if($("#EnableID").prop('checked') == true){
+                                    console.log('11')
+                                    Enable='True'
+                        }
+                        else{   
+                                    Enable='False'
+                        }
+                        
+         
+                        MatIP=$('#ServerIPID').val()
+                        MatGroup=$('#GroupNameID').val()
+                        MatProject=$('#ProjectNameID').val()
+                        MatVersion=$('#VersionID').val()
+                        MatEnvironment=$('#EnvironmentID').val()
+         
+                        if(JobName=='' || days=='' || Hours==''||Minutes==''){
+                            if(JobName==''){
+                                alert('Plase Enter JobName')
+                                return;
+                            }
+                            if(days==''){
+                                alert('Plase Enter days')
+                                return;
+                            }
+                            if(Hours==''){
+                                alert('Plase Enter Hours')
+                                return;
+                            }
+                            if(Minutes==''){
+                                alert('Plase Enter Minutes')
+                                return;
+                            }
+         
+                        }
+                        
+         
+                        info=getinfo(data)
+                        console.log('In Create Custom html')
+                        //console.log(info[0])
+                        //console.log(info[1])
+                        var Component_Seq=info[0]
+                        var Component_info=info[1]
+                        URL=window.location.href
+                        console.log('URL----'+URL)
+                        IDfromURL=URL.split('=')[1]
+                        if( IDfromURL){
+                             IDfromURL= IDfromURL
+                        }
+                        else{
+                             IDfromURL=''
+                        }
+         
+                        
+         
+                        $.ajax(
+                            {
+                                type:"GET",
+                                url: "/GetCustomJobInfo/",
+                                data:{
+                                         Com_Seq: JSON.stringify(Component_Seq),
+                                         Com_info:JSON.stringify(Component_info),
+                                         output:JSON.stringify(data),
+                                         IDURL:IDfromURL,
+                                         JobName:JobName,
+                                         days:days,
+                                         Hours:Hours,
+                                         Minutes:Minutes,
+                                         Enable:Enable,
+                                         MatIP:MatIP,
+                                         MatGroup:MatGroup,
+                                         MatProject:MatProject,
+                                         MatVersion:MatVersion,
+                                         MatEnvironment:MatEnvironment
+         
+                                         
+                                },
+                                contentType: 'application/json; charset=utf-8',
+                                dataType: 'json',
+         
+                                success: function( data ) 
+                                {
+                                    console.log(data)
+                                    //alert('success');
+         
+                                    //$('#publish').text('Saved')
+                                    
+                                  
+                                }
+                        });
+         
+         
+         
+         
+                });
+         
+            });
+                
+         
+                    
+      </script>
+      <script type="text/javascript">
+         $(document).ready(function () {
+             data={{data|safe }}
+             
+             
+         
+             console.log("{{JobName_P|safe}}")
+             console.log("{{Day_of_Week|safe}}")
+             console.log("{{Hours_p|safe}}")
+             console.log("{{Minutes_P|safe}}")
+             console.log("{{Enable_P|safe}}")
+         
+             console.log("{{MatIP|safe}} ---++je")
+         
+             console.log("{{MatGroup|safe}}")
+             console.log("{{MatProject|safe}}")
+             console.log("{{MatVersion|safe}}")
+             console.log("{{MatEnvironment|safe}}")
+         
+             $('#JobNameID').val("{{JobName_P|safe}}")
+             $('#Daysid').val("{{Day_of_Week|safe}}")
+             $('#Hourid').val("{{Hours_p|safe}}")
+             $('#MinutesId').val("{{Minutes_P|safe}}")
+             if("{{Enable_P|safe}}"=="True"){
+                 $('#EnableID').prop('checked', true);
+                 console.log('in if Enable_P ')
+             }
+             else{
+         
+                 $('#EnableID').prop('checked', false);
+                  console.log('in else Enable_P ')
+         
+             }   
+         
+             $('#ServerIPID').val("{{MatIP|safe}}")
+             $('#GroupNameID').val("{{MatGroup|safe}}")
+             $('#ProjectNameID').val("{{MatProject|safe}}")
+             $('#VersionID').val("{{MatVersion|safe}}") 
+             $('#EnvironmentID').val("{{MatEnvironment|safe}}")
+         
+             
+             
+             flowy.import(data);
+         
+             
+         
+         });
+      </script>
+   </head>
+   <body>
+      <div id="navigation">
+         <div id="leftside">
+            <div id="details">
+               <div id="back"><img src="{% static 'assets/arrow.svg' %}" onclick="history.back();"></div>
+               <div id="names">
+                  <div class="form-inline" style="margin-top: 10px;">
+                     <label for="Jobname">Job Name:</label>
+                     <input type="JobName" id="JobNameID" placeholder="Enter Job Name" name="Job">
+                     <label for="days">Days:</label>
+                     <input type="Days" id="Daysid" placeholder="mon.tue,web,thr,fri,sat,sun" name="days">
+                     <label for="Hour">Hour:</label>
+                     <input type="Hour" id="Hourid" placeholder="Enter Hour" name="Job">
+                     <label for="Minutes">Minutes:</label>
+                     <input type="Minutes" id="MinutesId" placeholder="Enter Minutes" name="Minutes">
+                     <input type="checkbox" id="EnableID" name="Enable" checked="True">
+                     <a id="publish" href=""onclick="return false;">Save Job</a>
+                  </div>
+                  <div class="form-inline">
+                     <label for="ServerIP">IP:</label>
+                     <input type="ServerIP" id="ServerIPID" placeholder="IP" name="ServerIP" />
+                     <label for="ServerIP">Group:</label>
+                     <input type="GroupNameID" id="GroupNameID" placeholder="Enter Group Name" name="GroupNameID" />
+                     <label for="ProjectName:">Project:</label>
+                     <input type="ProjectName" id="ProjectNameID" placeholder="Enter ProjectName" name="ProjectName" />
+                     <label for="Version">Version:</label>
+                     <input type="Version" id="VersionID" placeholder="Enter Version" name="Version" />
+                     <label for="Environment">Environment:</label>
+                     <input type="Environment" id="EnvironmentID" placeholder="Enter Environment" name="Environment" />
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div id="buttonsright">
+            <!--<a id="discard" href="" onclick="return false;">Get Save Job</a>-->
+         </div>
+      </div>
+      </div>
+      <div id="leftcard">
+         <div id="subnav">
+            <div id="triggers" class="navactive side">Component</div>
+            <div style="visibility:hidden" id="actions" class="navdisabled side">Actions</div>
+            <div style="visibility:hidden" id="loggers" class="navdisabled side">Loggers</div>
+         </div>
+         <div id="blocklist">
+            <div class="blockelem create-flowy noselect" style="border-color: darkgrey;">
+               <input type="hidden" name='blockelemtype' class="blockelemtype" value="python">
+               <div class="grabme">
+                  <img src="{% static 'assets/grabme.svg' %}">
+               </div>
+               <div class="blockin">
+                  <div class="blockico">
+                     <span></span>
+                     <img src="{% static 'assets/eye.svg' %}">
+                  </div>
+                  <div class="blocktext">
+                     <p class="blocktitle">Python</p>
+                     <p class="blockdesc">Select Python Component</p>
+                     <input type="text"></input>
+                  </div>
+               </div>
+            </div>
+            <div class="blockelem create-flowy noselect">
+               <input type="hidden" name='blockelemtype' class="blockelemtype" value="Matillion">
+               <div class="grabme">
+                  <img src="{% static 'assets/grabme.svg' %}">
+               </div>
+               <div class="blockin">
+                  <div class="blockico">
+                     <span></span>
+                     <img src="{% static 'assets/action.svg' %}">
+                  </div>
+                  <div class="blocktext">
+                     <p class="blocktitle">Matillion</p>
+                     <p class="blockdesc">Select Matillion Component</p>
+                  </div>
+               </div>
+            </div>
+            <div class="blockelem create-flowy noselect">
+               <input type="hidden" name='blockelemtype' class="blockelemtype" value="Talend">
+               <div class="grabme">
+                  <img src="{% static 'assets/grabme.svg' %}">
+               </div>
+               <div class="blockin">
+                  <div class="blockico">
+                     <span></span>
+                     <img src="{% static 'assets/time.svg' %}">
+                  </div>
+                  <div class="blocktext">
+                     <p class="blocktitle">Talend</p>
+                     <p class="blockdesc">Select Talend Component</p>
+                  </div>
+               </div>
+            </div>
+            <div class="blockelem create-flowy noselect">
+               <input type="hidden" name='blockelemtype' class="blockelemtype" value="4">
+               <div class="grabme">
+                  <img src="{% static 'assets/grabme.svg' %}">
+               </div>
+               <div class="blockin">
+                  <div class="blockico">
+                     <span></span>
+                     <img src="{% static 'assets/error.svg' %}">
+                  </div>
+                  <div class="blocktext">
+                     <p class="blocktitle">Error prompt</p>
+                     <p class="blockdesc">Triggers when a specified error happens</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div id="propwrap">
+         <div id="properties" style="background-color: lightgrey;width: 125px;">
+            <div id="close">
+               <img src="{% static 'assets/close.svg' %}">
+            </div>
+            <div id="divisionthing"></div>
+            <div style="width: 100px;" id="removeblock">Delete blocks</div>
+         </div>
+      </div>
+      <div id="canvas">
+      </div>
+   </body>
+</html>

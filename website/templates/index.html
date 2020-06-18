@@ -1,0 +1,174 @@
+{% load static %}
+<!DOCTYPE HTML>
+<!-- Website template by freewebsitetemplates.com -->
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Schedular</title>
+	<link rel="stylesheet" href="{% static 'css/style.css' %} " type="text/css">
+	<link rel="stylesheet" href="{% static 'css/style1.css' %} " type="text/css">
+
+	<script type="text/javascript" src="{% static 'js/index.js' %} "></script>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/plug-ins/1.10.21/dataRender/ellipsis.js"></script>
+	<style type="text/css">
+				
+		@keyframes ldio-w9qmp1aset {
+		  0% { opacity: 1 }
+		  100% { opacity: 0 }
+		}
+
+		.ldio-w9qmp1aset div {
+		  left: 94px;
+		  top: 48px;
+		  position: absolute;
+		  animation: ldio-w9qmp1aset linear 1s infinite;
+		  background: #b2abac;
+		  width: 12px;
+		  height: 24px;
+		  border-radius: 6px / 12px;
+		  transform-origin: 6px 52px;
+		}.ldio-w9qmp1aset div:nth-child(1) {
+		  transform: rotate(0deg);
+		  animation-delay: -0.9166666666666666s;
+		  background: #b2abac;
+		}.ldio-w9qmp1aset div:nth-child(2) {
+		  transform: rotate(30deg);
+		  animation-delay: -0.8333333333333334s;
+		  background: #b2abac;
+		}.ldio-w9qmp1aset div:nth-child(3) {
+		  transform: rotate(60deg);
+		  animation-delay: -0.75s;
+		  background: #b2abac;
+		}.ldio-w9qmp1aset div:nth-child(4) {
+		  transform: rotate(90deg);
+		  animation-delay: -0.6666666666666666s;
+		  background: #b2abac;
+		}.ldio-w9qmp1aset div:nth-child(5) {
+		  transform: rotate(120deg);
+		  animation-delay: -0.5833333333333334s;
+		  background: #b2abac;
+		}.ldio-w9qmp1aset div:nth-child(6) {
+		  transform: rotate(150deg);
+		  animation-delay: -0.5s;
+		  background: #b2abac;
+		}.ldio-w9qmp1aset div:nth-child(7) {
+		  transform: rotate(180deg);
+		  animation-delay: -0.4166666666666667s;
+		  background: #b2abac;
+		}.ldio-w9qmp1aset div:nth-child(8) {
+		  transform: rotate(210deg);
+		  animation-delay: -0.3333333333333333s;
+		  background: #b2abac;
+		}.ldio-w9qmp1aset div:nth-child(9) {
+		  transform: rotate(240deg);
+		  animation-delay: -0.25s;
+		  background: #b2abac;
+		}.ldio-w9qmp1aset div:nth-child(10) {
+		  transform: rotate(270deg);
+		  animation-delay: -0.16666666666666666s;
+		  background: #b2abac;
+		}.ldio-w9qmp1aset div:nth-child(11) {
+		  transform: rotate(300deg);
+		  animation-delay: -0.08333333333333333s;
+		  background: #b2abac;
+		}.ldio-w9qmp1aset div:nth-child(12) {
+		  transform: rotate(330deg);
+		  animation-delay: 0s;
+		  background: #b2abac;
+		}
+		.loadingio-spinner-spinner-emqnqb6lh8t {
+		  width: 200px;
+		  height: 200px;
+		  display: inline-block;
+		  overflow: hidden;
+		  background: #ffffff;
+		}
+		.ldio-w9qmp1aset {
+		  width: 100%;
+		  height: 100%;
+		  position: relative;
+		  transform: translateZ(0) scale(1);
+		  backface-visibility: hidden;
+		  transform-origin: 0 0; /* see note above */
+		}
+		.ldio-w9qmp1aset div { box-sizing: content-box; }
+
+	</style>
+
+
+
+	<script type="text/javascript">
+
+		$(document).ready(function () {
+			
+			GetData()
+			
+
+
+			
+		});
+	
+	</script>	
+
+	
+</head>
+<body id="bodycontentid">
+	<div id="header">
+		<div>
+			<div style="display: none;" class="logo">
+				<a href="/"></a>
+			</div>
+			<ul id="navigation">
+				<li class="active">
+					<a href="/">Home</a>
+				</li>
+				<li>
+					<a href="pythonjob">Python Scheduler</a>
+				</li>
+				<li>
+					<a href="matillionjobs">Matillion Scheduler</a>
+				</li>
+				<li>
+					<a href="Talendjob">Talend Scheduler</a>
+				</li>
+				<li>
+					<a href="CustomJobSee">CustomJob Scheduler</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	
+<div id="loadingiconid" style="margin-left: 40%;" class="loadingio-spinner-spinner-emqnqb6lh8t"><div class="ldio-w9qmp1aset">
+<div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+</div></div>
+
+	
+<table id="table_id" class="display hover row-border"  style="visibility: hidden;">
+		<thead class="MainTableHead" >
+	        <tr>
+	           
+	            <th>JobType</th>
+	            <th>JobName</th>
+	            <th>StartTime</th>
+	            <th>EndTime</th>
+	            <th>Sche_or_Manu</th>
+	            <th class="statusclass">Status</th>
+	            <th>description</th>
+	        </tr>
+	    </thead>
+	    <tbody class="MainContent">
+	    	
+
+
+	    </tbody>
+
+</table>
+
+	
+	
+</body>
+</html>
